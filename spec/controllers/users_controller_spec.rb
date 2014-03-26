@@ -15,10 +15,27 @@ describe UsersController, :type => :request do
   }
 
   describe "#create" do
+    before { post :create, valid_attributes }
     it "creates a user with valid attributes" do
-      post :create, valid_attributes
-      binding.pry
       expect(response.status).to eq(201)
+    end
+
+    it "the first names match" do
+      JSON.parse(response.body)["user"]["first_name"].should eq(valid_attributes[:user][:first_name])
+    end
+  end
+
+  describe "#show" do
+    let!(:user) { FactoryGirl.create(:user) }
+    before { get :show, :id => user.id }
+
+    it "responds with a 200 response" do
+      expect(response.status).to eq(200)
+    end
+
+    it "finds the authentication_token" do
+      binding.pry
+      JSON.parse(response.body)["user"]["authentication_token"].should eq(user[:authentication_token])
     end
   end
 
