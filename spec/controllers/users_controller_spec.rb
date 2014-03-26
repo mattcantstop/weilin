@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe UsersController, :type => :request do
+  render_views
+
   let!(:valid_attributes) {
     { :user => {
       :first_name           => "Walter",
@@ -15,6 +17,7 @@ describe UsersController, :type => :request do
   describe "#create" do
     it "creates a user with valid attributes" do
       post :create, valid_attributes
+      binding.pry
       expect(response.status).to eq(201)
     end
   end
