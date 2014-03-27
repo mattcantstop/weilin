@@ -3,6 +3,7 @@ require 'spec_helper'
 describe UsersController, :type => :request do
   render_views
 
+  let!(:user) { FactoryGirl.create(:user) }
   let!(:valid_attributes) {
     { :user => {
       :first_name           => "Walter",
@@ -13,6 +14,8 @@ describe UsersController, :type => :request do
       }
     }
   }
+
+  let!(:updated_params) { { :user => { :username => "Skinny Pete"} } }
 
   describe "#create" do
     before { post :create, valid_attributes }
@@ -26,7 +29,6 @@ describe UsersController, :type => :request do
   end
 
   describe "#show" do
-    let!(:user) { FactoryGirl.create(:user) }
     before { get :show, :id => user.id }
 
     it "responds with a 200 response" do
@@ -34,10 +36,16 @@ describe UsersController, :type => :request do
     end
 
     it "finds the authentication_token" do
-      binding.pry
       JSON.parse(response.body)["user"]["authentication_token"].should eq(user[:authentication_token])
     end
   end
 
+  describe "#update" do
+    before { put :update, :id => user.id, :user => updated_params }
+
+    it "returns a 200 on successful update" do
+      expect(response.status).to eq(200)
+    end
+  end
 
 end

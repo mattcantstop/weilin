@@ -13,6 +13,15 @@ class UsersController < ApplicationController
     render 'show.rabl'
   end
 
+  def update
+    binding.pry
+    if @user.update_attributes(user_params)
+      render 'show.rabl'
+    else
+      render 'errors.rabl'
+    end
+  end
+
   private
 
   def user_params
