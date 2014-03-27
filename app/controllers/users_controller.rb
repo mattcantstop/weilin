@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :find_user, only: [:show, :update, :delete]
+  before_action :find_user, only: [:show, :update, :destroy]
 
   def create
     @user = User.new(user_params)
@@ -14,11 +14,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    binding.pry
     if @user.update_attributes(user_params)
       render 'show.rabl'
     else
       render 'errors.rabl'
+    end
+  end
+
+  def destroy
+    @user.is_disabled = true
+    if @user.save
+      head :no_content
+    else
+      render_errors(@user)
     end
   end
 
