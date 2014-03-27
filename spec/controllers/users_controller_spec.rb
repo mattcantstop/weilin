@@ -4,6 +4,7 @@ describe UsersController, :type => :request do
   render_views
 
   let!(:user) { FactoryGirl.create(:user) }
+  let!(:deleting_user) { FactoryGirl.create(:user) }
   let!(:valid_attributes) {
     { :user => {
       :first_name           => "Walter",
@@ -46,6 +47,15 @@ describe UsersController, :type => :request do
     it "returns a 200 on successful update" do
       expect(response.status).to eq(200)
     end
+  end
+
+  describe "#delete" do
+
+    it "returns a 204 response when a user is disabled" do
+      delete :destroy, :id => deleting_user.id
+      expect(response.status).to eq(204)
+    end
+
   end
 
 end
