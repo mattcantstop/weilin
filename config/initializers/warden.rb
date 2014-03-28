@@ -12,7 +12,7 @@ end
 
 Warden::Strategies.add(:password) do
   def authenticate!
-    user = User.find_by_email(params['email']) || User.find_by_authentication_token(params['authentication_token'])
+    user = User.find_by_email(params['email'])
     if user && user.authenticate(params['password'])
       success! user
     else
