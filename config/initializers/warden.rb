@@ -10,9 +10,9 @@ Warden::Manager.serialize_from_session do |user|
   User.find(id)
 end
 
-Warden::Strategies.add(:password, :authentication_token) do
+Warden::Strategies.add(:password) do
   def authenticate!
-    user = User.find_by_email(params['email'])
+    user = User.find_by_email(params['email']) || User.find_by_authentication_token(params['authentication_token'])
     if user && user.authenticate(params['password'])
       success! user
     else
