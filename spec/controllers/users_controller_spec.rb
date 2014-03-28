@@ -50,12 +50,10 @@ describe UsersController, :type => :request do
   end
 
   describe "#delete" do
-
     it "returns a 204 response when a user is disabled" do
       delete :destroy, :id => deleting_user.id
       expect(response.status).to eq(204)
     end
-
   end
 
 end
