@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324140719) do
+ActiveRecord::Schema.define(version: 20140404141259) do
 
   create_table "users", force: true do |t|
     t.string   "first_name"
@@ -27,5 +27,24 @@ ActiveRecord::Schema.define(version: 20140324140719) do
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
+
+  create_table "wars", force: true do |t|
+    t.string   "name"
+    t.boolean  "has_end"
+    t.datetime "ending_date"
+    t.integer  "ending_score"
+    t.string   "prize"
+    t.boolean  "is_private"
+    t.boolean  "open_registration"
+    t.boolean  "is_complete"
+    t.integer  "winner_id"
+    t.integer  "owner_id"
+    t.boolean  "is_disabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wars", ["name"], name: "index_wars_on_name", using: :btree
+  add_index "wars", ["owner_id"], name: "index_wars_on_owner_id", using: :btree
 
 end
