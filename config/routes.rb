@@ -3,6 +3,11 @@ Weilin::Application.routes.draw do
   resources :users do
     resources :wars
   end
+
+  resources :wars do
+    resources :battles
+    resources :participants
+  end
   resources :sessions, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
