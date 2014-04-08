@@ -7,6 +7,5 @@ FactoryGirl.define do
     open_registration false
     is_private false
     prize "A High Five"
-    association :owner_id, factory: :user
   end
 end

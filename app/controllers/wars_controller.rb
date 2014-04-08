@@ -2,6 +2,7 @@ class WarsController < ApplicationController
 
   def create
     @war = War.new(war_params)
+    @war.owner_id = params[:user_id]
     if @war.save
       render 'wars/show.rabl', :status => 201
     else

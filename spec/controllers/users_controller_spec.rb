@@ -19,7 +19,9 @@ describe UsersController, :type => :request do
   let!(:updated_params) { { :user => { :username => "Skinny Pete"} } }
 
   describe "#create" do
+
     before { post :create, valid_attributes }
+
     it "creates a user with valid attributes" do
       expect(response.status).to eq(201)
     end
