@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :find_user, only: [:show, :update, :destroy]
+  attr_accessor :password, :password_confirmation
 
   def create
     @user = User.new(user_params)
