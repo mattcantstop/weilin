@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408030748) do
+ActiveRecord::Schema.define(version: 20140409135652) do
 
   create_table "battles", force: true do |t|
     t.integer  "war_id"
@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(version: 20140408030748) do
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
+
+  create_table "users_wars", id: false, force: true do |t|
+    t.integer "user_id"
+  end
 
   create_table "wars", force: true do |t|
     t.string   "name"
