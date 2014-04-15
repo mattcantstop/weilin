@@ -9,6 +9,7 @@ Weilin::Application.routes.draw do
     resources :participants
   end
   resources :sessions, only: [:create, :destroy]
+  post 'wars/:id/join' => 'wars#join'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

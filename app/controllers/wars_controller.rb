@@ -1,5 +1,7 @@
 class WarsController < ApplicationController
 
+  before_action :select_war
+
   def create
     @war = War.new(war_params)
     @war.owner_id = params[:user_id]
@@ -10,10 +12,19 @@ class WarsController < ApplicationController
     end
   end
 
+  def join
+    @war.participants.create(:war_id => @war.id, :user_id => params[:user_id])
+    render 'show.rabl', :status => 201
+  end
+
   private
 
   def war_params
     params.require(:war).permit(:name, :has_end, :ending_date, :ending_score, :prize, :is_private, :open_registration, :is_disabled)
+  end
+
+  def select_war
+    @war = War.find(params[:id])
   end
 
 end
