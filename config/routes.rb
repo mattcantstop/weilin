@@ -11,6 +11,7 @@ Weilin::Application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   post 'wars/:id/join' => 'wars#join'
+  get 'wars/:id/show_with_participants' => 'wars#show_with_participants'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
