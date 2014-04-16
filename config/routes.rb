@@ -8,6 +8,7 @@ Weilin::Application.routes.draw do
     resources :battles
     resources :participants
   end
+
   resources :sessions, only: [:create, :destroy]
   post 'wars/:id/join' => 'wars#join'
 

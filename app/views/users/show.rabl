@@ -1,2 +1,2 @@
 object @user
-attributes :first_name, :last_name, :username, :email, :authentication_token
+attributes :id, :first_name, :last_name, :username, :email, :authentication_token

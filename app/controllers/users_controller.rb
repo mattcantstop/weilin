@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       render 'show.rabl', status: 201
     else
+      puts @user.errors.full_messages
       render 'errors/show.rabl'
     end
   end
