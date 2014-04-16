@@ -17,7 +17,6 @@ class WarsController < ApplicationController
   end
 
   def join
-    binding.pry
     @war.participants.create(:war_id => @war.id, :user_id => params[:user_id])
     render 'show.rabl', :status => 201
   end
