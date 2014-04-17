@@ -1,6 +1,6 @@
 class WarsController < ApplicationController
 
-  before_action :select_war, only: [:show, :update, :delete, :join, :show_with_participants]
+  before_action :select_war, only: [:show, :update, :delete, :join, :show_with_participants_and_battles]
 
   def show
     render 'show.rabl'
@@ -21,8 +21,9 @@ class WarsController < ApplicationController
     render 'show.rabl', :status => 201
   end
 
-  def show_with_participants
+  def show_with_participants_and_battles
     @participants = @war.participants
+    @battles = @war.battles
     render 'show.rabl'
   end
 
