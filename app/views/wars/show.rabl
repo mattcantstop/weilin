@@ -3,3 +3,6 @@ attributes :name, :has_end, :ending_date, :ending_score, :prize, :is_private, :o
 if @participants
   extends "participants/index.rabl"
 end
+if @battles
+  extends "battles/index.rabl"
+end
