@@ -10,6 +10,7 @@ class WarsController < ApplicationController
     @war = War.new(war_params)
     @war.owner_id = params[:user_id]
     if @war.save
+      join
       render 'wars/show.rabl', :status => 201
     else
       render 'errors/show.rabl', :status => 422
