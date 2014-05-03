@@ -28,6 +28,11 @@ class WarsController < ApplicationController
     render 'show.rabl'
   end
 
+  def index
+    @wars = War.all
+    render 'index.rabl'
+  end
+
   private
 
   def war_params
