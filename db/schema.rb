@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140409135652) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "battles", force: true do |t|
     t.integer  "war_id"
     t.integer  "winner_id"
@@ -25,16 +28,6 @@ ActiveRecord::Schema.define(version: 20140409135652) do
   add_index "battles", ["user_id"], name: "index_battles_on_user_id", using: :btree
   add_index "battles", ["war_id"], name: "index_battles_on_war_id", using: :btree
   add_index "battles", ["winner_id"], name: "index_battles_on_winner_id", using: :btree
-
-  create_table "participants", force: true do |t|
-    t.integer  "war_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "participants", ["user_id"], name: "index_participants_on_user_id", using: :btree
-  add_index "participants", ["war_id"], name: "index_participants_on_war_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "first_name"
