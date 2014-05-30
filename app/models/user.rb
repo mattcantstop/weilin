@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
   has_many :participants
   has_many :wars, :through => :participants
 
+  before_create :generate_token
+
+  private
+
+  def generate_token
+    self.token = SecureRandom.uuid
+  end
+
 end

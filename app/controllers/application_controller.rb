@@ -4,4 +4,14 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :null_session, :if => Proc.new { |c| c.request.format == 'application/json' }
 
+  before_action :check_token
+
+  private
+
+  def check_token
+    authenticate_or_request_with_http_token do |token, options|
+      User.where(token: token)
+    end
+  end
+
 end
