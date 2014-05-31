@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :find_user, only: [:show, :update, :destroy]
-  skip_before_filter :check_token
+  skip_before_filter :check_token, only: :create
   attr_accessor :password, :password_confirmation
 
   def create
