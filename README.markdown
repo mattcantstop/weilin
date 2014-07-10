@@ -8,6 +8,7 @@ All requests must have the "API-KEY" header.
 
 #### Create User
 
+*REQUEST*
 HTTP Method: `POST`  
 URL: `/users`  
 Body:  
@@ -19,4 +20,20 @@ Body:
  "password":"a_secure_password"}
 ```
 
- 
+*RESPONSE*  
+HTTP Status Code: 201  
+{"user":{"id":1,"first_name":"Walter","last_name":"White","username":"heisenberg","email":"heisenberg@thesilkroad.com","token":"39cb0516-687GHE0194730f-4e8a-fd2b24835dd"}}
+
+#### Show User  
+
+*REQUEST*  
+HTTP Method: `GET`  
+URL: `/users/:user_id`  
+Body: no body  
+
+*RESPONSE*  
+HTTP Status Code: 200  
+```
+{"user":{"id":1,"first_name":"Walter","last_name":"White","username":"heisenberg","email":"heisenberg@thesilkroad.com","token":" 39cb0516-687GHE0194730f-4e8a-fd2b24835dd"}}
+```
+
