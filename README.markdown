@@ -9,7 +9,7 @@ All requests must have the "API-KEY" header.
 #### Create User
 
 HTTP Method: `POST`  
-URL: `/users`
+URL: `/users`  
 Body:  
 ```
 {"first_name":"Walter",
