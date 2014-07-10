@@ -12,8 +12,8 @@ All requests must have the "API-KEY" header.
 
 #### REQUEST  
 **HTTP Method:** `POST`  
-URL: `/users`  
-Body:  
+**URL Endpoint:** `/users`  
+**Body:**  
 ```
 {"first_name":"Walter",
  "last_name":"White",
@@ -23,7 +23,7 @@ Body:
 ```
 
 #### RESPONSE  
-HTTP Status Code: 201  
+**HTTP Status Code:** 201  
 ```
 {"user":
    {"id":1,
@@ -39,13 +39,13 @@ HTTP Status Code: 201
 ### Show User  
 
 #### REQUEST  
-HTTP Method: `GET`  
-Headers: `"Authorization:Token token='39cb0516-687GHE0194730f-4e8a-fd2b24835dd'"`  
-URL: `/users/:user_id`  
-Body: no body  
+**HTTP Method:** `GET`  
+**Headers:** `"Authorization:Token token='39cb0516-687GHE0194730f-4e8a-fd2b24835dd'"`  
+**URL Endpoint:** `/users/:user_id`  
+**Body:** no body  
 
 #### RESPONSE  
-HTTP Status Code: 200  
+**HTTP Status Code:** 200  
 ```
 {"user":
    {"id":1,
