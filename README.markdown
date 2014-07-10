@@ -38,7 +38,7 @@ HTTP Status Code: 201
 
 ### Show User  
 
-*REQUEST*  
+### REQUEST  
 HTTP Method: `GET`  
 URL: `/users/:user_id`  
 Body: no body  
