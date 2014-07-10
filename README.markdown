@@ -11,7 +11,7 @@ All requests must have the "API-KEY" header.
 ### Create User
 
 #### REQUEST  
-HTTP Method: `POST`  
+**HTTP Method:** `POST`  
 URL: `/users`  
 Body:  
 ```
