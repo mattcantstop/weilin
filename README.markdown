@@ -25,7 +25,15 @@ Body:
 #### RESPONSE  
 HTTP Status Code: 201  
 ```
-{"user":{"id":1,"first_name":"Walter","last_name":"White","username":"heisenberg","email":"heisenberg@thesilkroad.com","token":"39cb0516-687GHE0194730f-4e8a-fd2b24835dd"}}
+{"user":
+   {"id":1,
+    "first_name":"Walter",
+    "last_name":"White",
+    "username":"heisenberg",
+    "email":"heisenberg@thesilkroad.com",
+    "token":"39cb0516-687GHE0194730f-4e8a-fd2b24835dd"
+   }
+}
 ```
 
 ### Show User  
