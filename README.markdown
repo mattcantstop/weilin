@@ -10,7 +10,7 @@ All requests must have the "API-KEY" header.
 
 HTTP Method: `POST`  
 URL: `/users`
-Body:
+Body:  
 ```
 {"first_name":"Walter",
  "last_name":"White",
