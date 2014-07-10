@@ -40,12 +40,19 @@ HTTP Status Code: 201
 
 #### REQUEST  
 HTTP Method: `GET`  
+Headers: `"Authorization:Token token='39cb0516-687GHE0194730f-4e8a-fd2b24835dd'"`  
 URL: `/users/:user_id`  
 Body: no body  
 
 #### RESPONSE  
 HTTP Status Code: 200  
 ```
-{"user":{"id":1,"first_name":"Walter","last_name":"White","username":"heisenberg","email":"heisenberg@thesilkroad.com","token":" 39cb0516-687GHE0194730f-4e8a-fd2b24835dd"}}
+{"user":
+   {"id":1,
+    "first_name":"Walter",
+    "last_name":"White",
+    "username":"heisenberg",
+    "email":"heisenberg@thesilkroad.com",
+    "token":"39cb0516-687GHE0194730f-4e8a-fd2b24835dd"}}
 ```
 
