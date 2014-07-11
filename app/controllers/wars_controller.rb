@@ -13,7 +13,7 @@ class WarsController < ApplicationController
       @war.participants.create(:war_id => @war.id, :user_id => params[:user_id])
       render 'wars/show.rabl', :status => 201
     else
-      render 'errors/show.rabl', :status => 422
+      render 'errors/show.rabl', :status => 422, :war => @war
     end
   end
 
