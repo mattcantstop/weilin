@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711142202) do
+ActiveRecord::Schema.define(version: 20140714001653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accessors", force: true do |t|
+    t.string   "name"
+    t.text     "api_key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "battles", force: true do |t|
     t.integer  "war_id"

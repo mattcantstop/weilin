@@ -1,10 +1,17 @@
 # BigSkirmish API
 
-## Authentication
+## Register to Obtain API Key
+All requests must have the "API-KEY" header to be permitted. If you do
+not have an API Key you can obtain one at
+www.bigskirmish.com/developer/register.
 
-When authenticating into BigSkirmish you must first have an API Key.
-This API Key permits you, as a developer, to access the BigSkirmish API.
-All requests must have the "API-KEY" header. 
+## Authentication With API Key
+All request have an API Key header that is passed like this:  
+
+`"API-KEY: your_api_key"  
+
+If you do not have an API Key header, with a valid API Key as the value,
+your request will respond back with a 404 status. 
 
 ## Endpoints  
 
@@ -58,4 +65,25 @@ All requests must have the "API-KEY" header.
    }
 }
 ```
+
+First Time Registrant:
+- Requests have API Key
+- Registers by passing username/password
+- Writes to token for user
+  - Token is passed back in create response
+- Next requests have API Key header and Authorization Header for token
+
+All Subsequent Uses:
+- Enters username/password and reads user token for session
+- Pass user token from then on out to register. 
+- If user logs out it sets the token to nil
+
+
+
+
+
+
+
+
+
 

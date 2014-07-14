@@ -20,6 +20,7 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+gem 'pry'
 
 group :doc do
   gem 'sdoc', require: false
@@ -27,7 +28,6 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'pry'
   gem 'rspec-pride'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
@@ -44,6 +44,5 @@ gem 'unicorn'
 
 gem 'rabl'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'warden'
 
 gem 'rails_12factor', group: :production

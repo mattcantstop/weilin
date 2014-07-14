@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :find_user, only: [:show, :update, :destroy]
-  skip_before_filter :check_token, only: :create
+  skip_before_filter :find_and_validate_user, only: :create
   attr_accessor :password, :password_confirmation
 
   def create
@@ -16,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    binding.pry
     render 'show.rabl'
   end
 
@@ -40,10 +40,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :token, :is_disabled)
-  end
-
-  def find_user
-    @user = User.find(params[:id])
   end
 
 end
