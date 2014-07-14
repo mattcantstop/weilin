@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  before_filter :find_user, except: :create
   skip_before_filter :find_and_validate_user, only: :create
   attr_accessor :password, :password_confirmation
 
@@ -15,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    binding.pry
     render 'show.rabl'
   end
 
@@ -37,6 +37,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def find_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :token, :is_disabled)
