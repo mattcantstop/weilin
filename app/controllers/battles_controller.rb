@@ -19,7 +19,6 @@ class BattlesController < ApplicationController
   private
 
   def set_war
-    binding.pry
     @war = War.find(params[:war_id])
   end
 
