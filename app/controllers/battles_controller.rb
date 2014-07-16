@@ -9,6 +9,8 @@ class BattlesController < ApplicationController
   def create
     @battle = @war.battles.build(battle_params)
     if @battle.save
+      @score = Score.create(user_id: @battle.winner_id, war_id: @battle.war_id)
+      @score.add_win
       render 'wars/show.rabl', status: 201
     else
       puts @battle.errors.full_messages
