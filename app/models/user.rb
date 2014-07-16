@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :wars
   has_many :participants
   has_many :wars, :through => :participants
+  has_many :scores
 
   before_create :generate_token
 
