@@ -11,7 +11,7 @@ All request have an API Key header that is passed like this:
 `"API-KEY: your_api_key"  
 
 If you do not have an API Key header, with a valid API Key as the value,
-your request will respond back with a 404 status. 
+your request will respond back with a 404 status.
 
 ## Endpoints  
 
@@ -66,6 +66,26 @@ your request will respond back with a 404 status.
 }
 ```
 
+### Create War
+**HTTP Method:** GET  
+**Headers:** `"Authorization:Token token='39cb0516-687GHE0194730f-4e8a-fd2b24835dd'"`  
+**URL Endpoint:**`/users/:user_id/wars`  
+**Body:**
+```
+{"war":
+  {"name":"Darts",
+   "has_end":true,
+   "ending_date":1406786400,
+   "ending_score":4,
+   "prize":"Loser buys dinner",
+   "is_private":false,
+   "open_registration":false
+  }
+}
+```
+
+
+
 First Time Registrant:
 - Requests have API Key
 - Registers by passing username/password
@@ -75,15 +95,5 @@ First Time Registrant:
 
 All Subsequent Uses:
 - Enters username/password and reads user token for session
-- Pass user token from then on out to register. 
+- Pass user token from then on out to register.
 - If user logs out it sets the token to nil
-
-
-
-
-
-
-
-
-
-

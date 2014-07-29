@@ -8,6 +8,7 @@ class WarsController < ApplicationController
 
   def create
     @war = War.new(war_params)
+    @war.ending_date = sanitize_date(params['war']['ending_date'])
     @war.owner_id = params[:user_id]
     if @war.save
       @war.participants.create(:war_id => @war.id, :user_id => params[:user_id])
@@ -33,6 +34,13 @@ class WarsController < ApplicationController
     render 'index.rabl'
   end
 
+  def update
+    @war = War.find(params[:id])
+    if @war.save
+      render 'show.rabl'
+    end
+  end
+
   private
 
   def war_params
@@ -41,6 +49,11 @@ class WarsController < ApplicationController
 
   def select_war
     @war = War.find(params[:id])
+  end
+
+  def sanitize_date(integer_date)
+    datetime = Time.at(integer_date).to_datetime
+    return datetime
   end
 
 end
