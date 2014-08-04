@@ -52,7 +52,7 @@ class WarsController < ApplicationController
   end
 
   def sanitize_date(integer_date)
-    datetime = Time.at(integer_date).to_datetime
+    datetime = Time.at(integer_date).utc.to_datetime
     return datetime
   end
 

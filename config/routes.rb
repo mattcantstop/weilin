@@ -6,7 +6,8 @@ Weilin::Application.routes.draw do
 
   resources :wars do
     resources :battles
-    resources :participants
+    post 'participants', to: 'participants#create'
+    get 'participants', to: 'participants#index'
   end
 
   post 'wars/:id/join' => 'wars#join'

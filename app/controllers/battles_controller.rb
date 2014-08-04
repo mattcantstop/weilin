@@ -8,6 +8,9 @@ class BattlesController < ApplicationController
 
   def create
     @battle = @war.battles.build(battle_params)
+    if !@war.is_active?
+      render 'errors/show.rabl', status: 409
+    end
     if @battle.save
       @score = Score.where(user_id: @battle.winner_id, war_id: @battle.war_id).first_or_create
       @score.add_win
