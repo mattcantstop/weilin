@@ -9,7 +9,7 @@ class War < ActiveRecord::Base
     score = Score.where(:war_id => self.id, :user_id => current_user.id)
     if self.ending_score == score.first.tally
       self.mark_as_complete
-      self.assign_winner(current_user)
+      self.assign_winner(current_user.id)
       self.save
       return true
     else
@@ -21,12 +21,16 @@ class War < ActiveRecord::Base
     self.is_complete = true
   end
 
-  def assign_winner(current_user)
-    self.winner_id = current_user.id
+  def assign_winner(current_user_id)
+    self.winner_id = current_user_id
   end
 
   def is_active?
-    return true if self.is_disabled == true && self.is_complete == false
+    if self.is_disabled == false && self.is_complete == false
+      return true
+    else
+      return false
+    end
   end
 
   def check_for_time_end
@@ -38,10 +42,9 @@ class War < ActiveRecord::Base
   end
 
   def calculate_winner_by_wins
-    array_of_all_tallies = self.scores.map { |score| score[:tally] }
-    winning_tally = array_of_all_tallies.max
-    winner = self.scores.find_by_tally(winning_tally)
-    assign_winner(winner)
+    array_of_all_tallies_with_user_id = self.scores.map { |score| [score[:tally], score[:user_id]] }
+    winning_tally_with_user_id = array_of_all_tallies_with_user_id.max
+    assign_winner(winning_tally_with_user_id[1])
   end
 
 end

@@ -7,7 +7,6 @@ class ParticipantsController < ApplicationController
   end
 
   def create
-    binding.pry
     @participant = @war.participants.build(war_id: @war.id, user_id: params[:participant][:user_id])
     if @participant.save
       render 'wars/show.rabl', status: 201
