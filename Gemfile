@@ -43,6 +43,6 @@ gem 'unicorn'
 # gem 'debugger', group: [:development, :test]
 
 gem 'rabl'
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 gem 'rails_12factor', group: :production
