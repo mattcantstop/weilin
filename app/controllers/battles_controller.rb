@@ -14,7 +14,7 @@ class BattlesController < ApplicationController
     if @battle.save
       @score = Score.where(user_id: @battle.winner_id, war_id: @battle.war_id).first_or_create
       @score.add_win
-      @war.check_for_completion(@current_user, @score)
+      @war.check_for_completion(@current_user, @score) if @war.has_end? && !@war.ending_score.nil?
       render 'wars/show.rabl', status: 201
     else
       puts @battle.errors.full_messages

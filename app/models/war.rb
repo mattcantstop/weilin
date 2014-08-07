@@ -19,10 +19,12 @@ class War < ActiveRecord::Base
 
   def mark_as_complete
     self.is_complete = true
+    self.save
   end
 
   def assign_winner(current_user_id)
     self.winner_id = current_user_id
+    self.save
   end
 
   def is_active?
@@ -36,14 +38,16 @@ class War < ActiveRecord::Base
   def check_for_time_end
     day_war_ends = self.ending_date
     if Time.now.utc >= day_war_ends
+      puts "Closing out a war"
       self.mark_as_complete
-      self.calculate_winner_by_wins
+      self.calculate_winner_by_wins if !self.scores.blank?
     end
   end
 
   def calculate_winner_by_wins
     array_of_all_tallies_with_user_id = self.scores.map { |score| [score[:tally], score[:user_id]] }
     winning_tally_with_user_id = array_of_all_tallies_with_user_id.max
+    puts "#{winning_tally_with_user_id.inspect}"
     assign_winner(winning_tally_with_user_id[1])
   end
 
