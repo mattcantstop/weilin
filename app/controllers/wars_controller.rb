@@ -44,7 +44,7 @@ class WarsController < ApplicationController
   private
 
   def war_params
-    params.require(:war).permit(:name, :has_end, :ending_date, :ending_score, :prize, :is_private, :open_registration, :is_disabled)
+    params.require(:war).permit(:name, :description, :has_end, :ending_date, :ending_score, :prize, :is_private, :open_registration, :is_disabled)
   end
 
   def select_war
