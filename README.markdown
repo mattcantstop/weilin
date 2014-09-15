@@ -19,7 +19,7 @@ your request will respond back with a 404 status.
 
 #### REQUEST  
 **HTTP Method:** `POST`  
-**HEADERS:**`"API-KEY: your_api_key"  
+**HEADERS:**`"API-KEY: your_api_key"`  
 **URL Endpoint:** `/users`  
 **Body:**  
 ```
