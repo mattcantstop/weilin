@@ -12,5 +12,6 @@ Weilin::Application.routes.draw do
 
   post 'wars/:id/join' => 'wars#join'
   get 'wars/:id/show_with_participants_and_battles' => 'wars#show_with_participants_and_battles'
+  post 'users/authenticate' => 'users#authenticate'
 
 end

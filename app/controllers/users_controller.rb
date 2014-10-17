@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :find_user, except: :create
-  skip_before_filter :find_and_validate_user, only: :create
+  before_filter :find_user, except: [:create, :authenticate]
+  skip_before_filter :find_and_validate_user, only: [:authenticate, :create]
   attr_accessor :password, :password_confirmation
 
   def create
@@ -12,6 +12,16 @@ class UsersController < ApplicationController
     else
       puts @user.errors.full_messages
       render 'errors/show.rabl'
+    end
+  end
+
+  def authenticate
+binding.pry
+    @user = User.find_by_email(params[:login]).try(:authenticate, params[:password])
+    if !@user.nil?
+      render 'show.rabl'
+    else
+      raise ActionController::RoutingError.new("Resource Not Found")
     end
   end
 
