@@ -45,6 +45,36 @@ your request will respond back with a 404 status.
 }
 ```
 
+### Authenticate User
+
+#### REQUEST  
+**HTTP Method:** `POST`  
+**HEADERS:**`"API-KEY: your_api_key"`  
+**URL Endpoint:** `/users/authenticate`  
+**Body:**  
+```
+{"login":"your_email_address",
+ "password":"a_secure_password"
+}
+```
+
+#### RESPONSE  
+**HTTP Status Code:** 200
+```
+{"user":
+   {"id":1,
+    "first_name":"Walter",
+    "last_name":"White",
+    "username":"heisenberg",
+    "email":"heisenberg@thesilkroad.com",
+    "token":"39cb0516-687GHE0194730f-4e8a-fd2b24835dd"
+   }
+}
+```
+`Note:` "login" is the field because at some point this will accept a
+username or an email address. Currently only email is supported
+
+
 ### Show User  
 
 #### REQUEST  
