@@ -17,10 +17,10 @@ class UsersController < ApplicationController
 
   def authenticate
     @user = User.find_by_email(params[:login]).try(:authenticate, params[:password])
-    if !@user.nil?
+    if !@user.blank?
       render 'show.rabl', status: 200
     else
-      raise ActionController::RoutingError.new("Resource Not Found")
+      render '/errors/show.rabl', status: 401
     end
   end
 
